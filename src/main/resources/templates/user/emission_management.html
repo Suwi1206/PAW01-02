@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emission Management</title>
+</head>
+<body>
+
+<!-- List of inactive emissions -->
+<h2>Inactive Emissions</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Series Name</th>
+        <th>Series Code</th>
+        <th>Country Name</th>
+        <th>Country Code</th>
+        <th>YR2024</th>
+        <th>Active</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emission : ${emissions}">
+        <td th:text="${emission.id}"></td>
+        <td th:text="${emission.seriesName}"></td>
+        <td th:text="${emission.seriesCode}"></td>
+        <td th:text="${emission.countryName}"></td>
+        <td th:text="${emission.countryCode}"></td>
+        <td th:text="${emission.YR2024}"></td>
+        <td th:text="${emission.isActive} ? 'Yes' : 'No'"></td>
+        <td>
+            <a th:href="@{/admin/update_emission(id=${emission.id})}">Update</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Form for updating or creating an emission -->
+<h2>Update / Create Emission</h2>
+<form action="/admin/updateEmission" method="post">
+    <input type="hidden" name="id" th:value="${emission.id}">
+    <label for="seriesName">Series Name:</label>
+    <input type="text" id="seriesName" name="seriesName" th:value="${emission.seriesName}">
+    <br>
+    <label for="seriesCode">Series Code:</label>
+    <input type="text" id="seriesCode" name="seriesCode" th:value="${emission.seriesCode}">
+    <br>
+    <label for="countryName">Country Name:</label>
+    <input type="text" id="countryName" name="countryName" th:value="${emission.countryName}">
+    <br>
+    <label for="countryCode">Country Code:</label>
+    <input type="text" id="countryCode" name="countryCode" th:value="${emission.countryCode}">
+    <br>
+    <label for="yr2024">YR2024:</label>
+    <input type="text" id="yr2024" name="yr2024" th:value="${emission.YR2024}">
+    <br>
+    <label for="isActive">Active:</label>
+    <input type="checkbox" id="isActive" name="isActive" th:checked="${emission.isActive}">
+    <br>
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

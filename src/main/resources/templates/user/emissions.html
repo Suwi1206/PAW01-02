@@ -1,0 +1,129 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('/img/sphere-with-trees.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #1e0000;
+    }
+    .navbar {
+      background-color: #333;
+    }
+    .navbar-brand, .navbar-text {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/adminemissions">Herausgeber</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/emissions">Datensatz bearbeiten</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/add_emission">Datensatz eintragen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Startseite</a>
+        </li>
+        <div sec:authorize="isAuthenticated()">
+          <a class="nav-link" href="/logout" th:action="@{/logout}" >Abmelden</a>
+      </div>
+      </ul>
+    </div>
+  </nav>
+
+<div class="container-fluid bg-white">
+    <div class="container-fluid">
+        <h1>Weltweiten CO2-Emissionen</h1>
+        <div class="row">
+
+            <div class="container-fluid mt-5">
+           
+              <div class="form-group">
+                <label for="filter"><b>Filter nach Ländernamen:</b></label>
+                <input type="text" class="form-control" id="filter" placeholder="Filter nach Ländernamen:>
+            </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Series Name</th>
+                                <th>Series Code</th>
+                                <th>Country Name</th>
+                                <th>Country Code</th>
+                                <th>2024</th>
+                            </tr>
+                        </thead>
+                        <tbody id="emissionsTableBody">
+                            <!-- Data will be inserted here dynamically using Thymeleaf -->
+                            <tr th:each="emission : ${emissions}">
+                                <td th:text="${emission.SeriesName}"></td>
+                                <td th:text="${emission.SeriesCode}"></td>
+                                <td th:text="${emission.CountryName}"></td>
+                                <td th:text="${emission.CountryCode}"></td>
+              
+                                <td th:text="${emission.YR2024}"></td>
+                                <td>
+                                    <a th:href="@{/emission(id=${emission.id})}" class="btn btn-info">Details</a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/edit_emission(id=${emission.id})}" class="btn btn-dark">Edit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#filter').on('input', function() {
+        var searchText = $(this).val().toLowerCase();
+        $('#emissionsTableBody tr').each(function() {
+            var countryName = $(this).find('td:eq(2)').text().toLowerCase(); // Index 2 for the country name column
+            if (countryName.includes(searchText)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

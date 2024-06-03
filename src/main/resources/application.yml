@@ -1,0 +1,16 @@
+
+
+
+port: 8080
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.auth0.example: TRACE
+
+okta:
+  oauth2:
+    issuer: https://dev-o06zqcp3pvcdib8e.us.auth0.com/
+    client-id: rHPaJaSJzUiOJ7TH2TynfMIdEoL4QuDC
+    client-secret: CiZqtzY5CZjqed0rqxvbLkDIL8gxa9Abfpz5xCna9w_aIaS1BG4U86hlslpPyOnQ

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emission Details</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the content */
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row center-content">
+            <div class="col-md-6">
+                <h1 class="text-center">Emission Details</h1>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Series Name:</strong> [[${emission.seriesName}]]</li>
+                    <li class="list-group-item"><strong>Series Code:</strong> [[${emission.seriesCode}]]</li>
+                    <li class="list-group-item"><strong>Country Name:</strong> [[${emission.countryName}]]</li>
+                    <li class="list-group-item"><strong>Country Code:</strong> [[${emission.countryCode}]]</li>
+                    <li class="list-group-item"><strong>YR2024:</strong> [[${emission.YR2024}]]</li>
+                    <!-- Add more details as needed -->
+                </ul>
+                <div class="text-center mt-3">
+                    <a href="/emissions" class="btn btn-success">Zurück zu den Emissionen</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

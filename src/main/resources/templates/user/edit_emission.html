@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Emission</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the form */
+        .center-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row center-form">
+            <div class="col-md-6">
+                <h1 class="text-center">Emission bearbeiten</h1>
+                <form th:action="@{/updateEmission}" method="post">
+                    <input type="hidden" name="id" th:value="${emission.id}"/>
+                    <div class="form-group">
+                        <label>Serienname:</label>
+                        <input type="text" class="form-control" name="seriesName" th:value="${emission.seriesName}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Seriennummer:</label>
+                        <input type="text" class="form-control" name="seriesCode" th:value="${emission.seriesCode}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Land:</label>
+                        <input type="text" class="form-control" name="countryName" th:value="${emission.countryName}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Land Code:</label>
+                        <input type="text" class="form-control" name="countryCode" th:value="${emission.countryCode}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>CO2 Emission:</label>
+                        <input type="text" class="form-control" name="YR2024" th:value="${emission.YR2024}"/>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Aktualisieren</button>
+                        <a href="/emissions" class="btn btn-secondary">Abbrechen</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

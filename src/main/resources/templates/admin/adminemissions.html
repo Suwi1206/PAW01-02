@@ -1,0 +1,101 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('/img/sphere-with-trees.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #1e0000;
+    }
+    .navbar {
+      background-color: #333;
+    }
+    .navbar-brand, .navbar-text {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/adminemissions">Herausgeber</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/emissions">Datensatz bearbeiten</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/add_emission">Datensatz eintragen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Startseite</a>
+        </li>
+        <div sec:authorize="isAuthenticated()">
+          <a class="nav-link" href="/logout" th:action="@{/logout}" >Abmelden</a>
+      </div>
+      </ul>
+    </div>
+  </nav>
+  
+
+
+<div class="container bg-white mt-4 p-3">
+    <h2 class="mb-4">Administrator: Emissionen freigeben</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Series Name</th>
+                    <th>Series Code</th>
+                    <th>Country Name</th>
+                    <th>Country Code</th>
+                    <th>YR2024</th>
+                    <th class="table-actions">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your data rows here -->
+                <tr th:each="emission : ${emissions}">
+                    <td th:text="${emission.id}"></td>
+                    <td th:text="${emission.seriesName}"></td>
+                    <td th:text="${emission.seriesCode}"></td>
+                    <td th:text="${emission.countryName}"></td>
+                    <td th:text="${emission.countryCode}"></td>
+                    <td th:text="${emission.YR2024}"></td>
+                    <td class="table-actions">
+                        <a th:href="@{/admineditemissions(id=${emission.id})}" class="btn btn-sm btn-success">Aktualisieren</a>
+                        <!-- Add more action buttons if needed -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+
+
+</body>
+</html>

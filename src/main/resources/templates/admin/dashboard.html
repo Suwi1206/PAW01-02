@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+
+
+    body {
+      background-image: url('/img/sphere-with-trees.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Ensures the background image covers the entire viewport */
+  color: #000000;
+}
+    .navbar {
+      background-color: #333;
+    }
+    .navbar-brand, .navbar-text {
+      color: #fff;
+    }
+    .container {
+      padding-top: 50px;
+    }
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex-column {
+      flex: 1;
+      padding: 15px;
+    }
+    .flex-column img {
+      max-width: 100%;
+      height: auto;
+    }
+    .right-column {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .right-column a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">Dashboard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/adminemissions">Herausgeber</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/emissions">Datensatz bearbeiten</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add_emission">Datensatz eintragen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Startseite</a>
+      </li>
+      <div sec:authorize="isAuthenticated()">
+        <a class="nav-link" href="/logout" th:action="@{/logout}" >Abmelden</a>
+    </div>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container ">
+  <div class="flex-container bg-white  text-dark rounded">
+    <div class="flex-column">
+      <img src="/img/admin-ad.jpg" alt="Left Image"> <!-- Replace 'your-image-url.jpg' with the actual image URL -->
+    </div>
+    <div class="flex-column right-column text-start">
+      <h3>CO2 emissions (metric tons per capita)</h3>
+      <p>
+        Die Emissionsdaten stammen aus den historischen Treibhausgasemissionen von Climate Watch (1990-2020). 2023. Washington, DC: World Resources Institute. Verfügbar online unter: climatewatchdata.org/ghg-emissions
+Lizenz: Namensnennung-Nicht kommerziell 4.0 International (CC BY-NC 4.0)
+      </p>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

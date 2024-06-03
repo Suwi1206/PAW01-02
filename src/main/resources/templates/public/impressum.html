@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO²-Footprint</title>
+    <!-- Dieser spezielle Link verweist auf eine CSS-Datei von Bootstrap, einer beliebten Bibliothek für das Frontend-Webdesign -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Dieser spezielle Link verweist auf eine CSS-Datei von Font Awesome, einer Bibliothek, die eine Vielzahl von Symbolen und Icons bereitstellt, die in Webprojekten verwendet werden können -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Dies bedeutet, dass die Datei "style.css" im Unterverzeichnis "css" relativ zum aktuellen Verzeichnis des HTML-Dokuments liegt. -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+
+.bg {
+    background-image: url('img/co2/35809642_8342459.png');
+    /* Specify other background properties as needed */
+    background-size: cover; /* This ensures the image covers the entire navbar */
+    background-position: center; /* This centers the image */
+    /* Add more styling properties as desired */
+    height: max-content;
+    min-height: max-content;
+}
+.rouiner {
+
+            border-radius: 10px; /* Make corners rounded */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            margin: 20px; /* Add margin for spacing */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar bg navbar-expand-lg navbar-light bg-dark p-4">
+            <div class="d-flex justify-content-between">
+                <a class="nav-link " href="#"><img src="./img/logo.png" alt="Logo" style="height: 50px;"></a>
+
+                <h1 class="navbar-title">Like Hero To Zero</h1>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto ">
+            
+                    <li class="nav-item">
+                        <a class="nav-link text-white"
+                        href="http://localhost:8080/impressum">Impressum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white"
+                        href="http://localhost:8080/berichte">Co2</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-white"
+                        href="http://localhost:8080/">Startseite</a>
+                    </li>
+                    <li class="nav-item active" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link text-white" th:href="@{/oauth2/authorization/okta}">Log In</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <br>
+
+        <div class="wrapper container">
+          <main role="main">
+
+      
+
+      
+              <!-- START THE FEATURETTES -->
+      
+      
+              <div class="row featurette">
+                <div class="col-md-7">
+                  <section>
+                    <h2>Angaben gemäß § 5 TMG:</h2>
+                    <p>Ihr Name<br>
+                    Ihre Straße 123<br>
+                    12345 Ihre Stadt</p>
+        
+                    <h2>Kontakt:</h2>
+                    <p>Telefon: 01234 / 56789<br>
+                    E-Mail: info@example.com</p>
+        
+                    <h2>Vertreten durch:</h2>
+                    <p>Ihr Name</p>
+        
+                    <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h2>
+                    <p>Ihr Name<br>
+                    Ihre Straße 123<br>
+                    12345 Ihre Stadt</p>
+                </section>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto rounded" src="img/co2/imprint.png" data-holder-rendered="true" style="width: 500px; height: 500px;">
+                </div>
+            </div>
+            
+
+              <br>
+      
+      
+      
+            </div><!-- /.container -->
+      
+      
+  
+
+
+
+        <footer class="footer bg-info text-white bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 column">
+                        <h4>CO²-Footprint </h4>
+                    </div>
+                    <div class="col-md-6 column">
+                        <h4>Wichtige Link</h4>
+                        <a href="http://localhost:8080/impressum"
+                        class="link-body-emphasis link-offset-2 text-white ">Impressum</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
